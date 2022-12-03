@@ -80,7 +80,7 @@ export class MaxHeap {
 }
 
 try {
-  const data = fs.readFileSync('day-one.txt', 'utf8')
+  const data = fs.readFileSync('day-1.txt', 'utf8')
   const input = data.split('\n')
 
   const flattenedCalories = parseCalories(input)

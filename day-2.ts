@@ -47,7 +47,7 @@ const getMyTotalScore = (guide: [string, string][]) => {
 }
 
 try {
-  const data = fs.readFileSync('day-two.txt', 'utf8')
+  const data = fs.readFileSync('day-2.txt', 'utf8')
   const input = data.split('\n')
   const guide: [string, string][] = input.map((pair) => {
     const split = pair.split(' ')
