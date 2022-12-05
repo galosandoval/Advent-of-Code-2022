@@ -1,13 +1,6 @@
 import fs from 'fs'
 
-// const input = [
-//   'vJrwpWtwJgWrhcsFMMfFFhFp',
-//   'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
-//   'PmmdzqPrVvPwwTWBwg',
-//   'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
-//   'ttgJtRGJQctTZtZT',
-//   'CrZsJsPPZsGzwwsLwLmpwMDw'
-// ]
+// Part one
 
 // const lowerRange = 'az'
 // console.log('a', lowerRange.charCodeAt(0))
@@ -15,54 +8,6 @@ import fs from 'fs'
 // const higherRange = 'AZ'
 // console.log('A', higherRange.charCodeAt(0))
 // console.log('Z', higherRange.charCodeAt(1))
-
-// const getSumOfPriorities = (ruckSacks: string[]) => {
-//   const priorities = findPriorities(ruckSacks)
-//   let sum = 0
-//   for (const priority of priorities) {
-//     const code = priority.charCodeAt(0)
-//     if (code >= 97 && code <= 122) {
-//       const toAdd = code - 96
-//       sum += toAdd
-//     }
-//     if (code >= 65 && code <= 90) {
-//       const toAdd = code - 64 + 26
-//       sum += toAdd
-//     }
-//   }
-//   console.log('sum', sum)
-// }
-
-// function findPriorities(ruckSacks: string[]) {
-//   const priorities: string[] = []
-//   for (const ruckSack of ruckSacks) {
-//     const half = ruckSack.length / 2
-//     const first = ruckSack.slice(0, half)
-//     const second = ruckSack.slice(half)
-
-//     const priorityDict: { [priority: string]: boolean } = {}
-//     for (const char of first) {
-//       if (!(char in priorityDict)) {
-//         priorityDict[char] = false
-//       }
-//     }
-//     for (const char of second) {
-//       if (char in priorityDict && !priorityDict[char]) {
-//         priorityDict[char] = true
-//         priorities.push(char)
-//       }
-//     }
-//   }
-//   return priorities
-// }
-
-// try {
-//   const data = fs.readFileSync('day-3.txt', 'utf8')
-//   const input = data.split('\n')
-//   getSumOfPriorities(input)
-// } catch (e) {
-//   console.log('Error:', e.stack)
-// }
 
 const getSumOfPriorities = (ruckSacks: string[]) => {
   const badges = findBadges(ruckSacks)
@@ -83,8 +28,33 @@ const getSumOfPriorities = (ruckSacks: string[]) => {
   console.log('sum', sum)
 }
 
+// First Part
+function findPriorities(ruckSacks: string[]) {
+  const priorities: string[] = []
+  for (const ruckSack of ruckSacks) {
+    const half = ruckSack.length / 2
+    const first = ruckSack.slice(0, half)
+    const second = ruckSack.slice(half)
+
+    const priorityDict: { [priority: string]: boolean } = {}
+    for (const char of first) {
+      if (!(char in priorityDict)) {
+        priorityDict[char] = false
+      }
+    }
+    for (const char of second) {
+      if (char in priorityDict && !priorityDict[char]) {
+        priorityDict[char] = true
+        priorities.push(char)
+      }
+    }
+  }
+  return priorities
+}
+
 type ItemOccurences = { [item: string]: number }
 
+// Second Part
 function findBadges(ruckSacks: string[]) {
   const badges: string[] = []
   let itemDict: ItemOccurences = {}
